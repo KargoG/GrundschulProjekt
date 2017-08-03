@@ -13,6 +13,8 @@ var lebenBallons = 4;
 var aufgabenRichtigBallons = 0;
 var aufgabenZielBallons = 4;
 
+// Eine Test Zeile für Git
+
 $(function(){
 	setUpStartscreen();
 });
