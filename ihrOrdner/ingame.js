@@ -17,6 +17,58 @@ $(function(){
 	setUpStartscreen();
 });
 
+function setUpStartscreen()
+{
+	// Das Bild MUSS noch geändert werden -----------------------------------------------
+	$("body").css({"backgroundImage" : "url('bilder/Dosenstand.png')"})
+
+	$("body").append("<div class='startscreenText'>Jahrmarkt Spaß</div>")
+	$("body").append("<div class='auswahlButtons' id='spielStarten'>Spiel Starten</div>");
+	$("body").append("<div class='auswahlButtons' id='credits'>Credits</div>");
+
+	$(".auswahlButtons#spielStarten").click(function(){
+
+		setUpBallonwerfen();
+		removeStartscreen();
+	});
+
+	$(".auswahlButtons#credits").click(function(){
+		setUpCredits();
+		removeStartscreen();
+	});
+}
+
+function setUpCredits()
+{
+
+	// Das zeug muss noch mal geupdated werden mit ordentlichem bild
+	$("body").css({
+  	"background": "radial-gradient(circle at top center, #333 20%, #111 100%)" //*irgendwas rundes als hintergrund*//
+	});
+
+	$("body").html(
+		// Hier sind die Entwickler drin
+		"<div id='all'>\
+		  <p class='movie'> Der Jahrmarkt</p>\
+		  <p class='job'> directed by</p>\
+		  <p class='name'> Christian Fedrau</p>\
+		  <p class='job'> produced by</p>\
+		  <p class='name'> Christian Fedrau<br> Sven Peitzmeier</p>\
+		  <p class='job'> story</p>\
+		  <p class='name'> Sven Peitzmeier </p>\
+		</div>\
+		<input type='button' value='exit' id='exit'>"//Hier geht es wieder zurück
+	);
+
+	$("#exit").css({"background":"green"});
+
+	$("#exit").css({"cursor":"pointer"});
+
+	$("#exit").click(function(){
+		location.href="index.html";//hier relativ adressierung zur Startseite
+	});
+}
+
 function setUpDosenstand()
 {
 
@@ -280,28 +332,6 @@ function setUpBallonwerfen()
 	aufgabeErzeugenPlus();
 }
 
-function setUpStartscreen()
-{
-	// Das Bild MUSS noch geändert werden -----------------------------------------------
-	$("body").css({"backgroundImage" : "url('bilder/Dosenstand.png')"})
-
-	$("body").append("<div class='startscreenText'>Jahrmarkt Spaß</div>")
-	$("body").append("<div class='auswahlButtons' id='spielStarten'>Spiel Starten</div>");
-	$("body").append("<div class='auswahlButtons' id='credits'>Credits</div>");
-
-	$(".auswahlButtons#spielStarten").click(function(){
-
-		setUpBallonwerfen();
-		removeStartscreen();
-	});
-
-	$(".auswahlButtons#credits").click(function(){
-		setUpDosenstand();
-		removeStartscreen();
-	});
-}
-
-
 function removeStartscreen()
 {
 	$(".auswahlButtons").remove();
@@ -314,7 +344,11 @@ function removeDosenwerfstand()
 	$(".ball").remove();
 	$(".aufgabe").remove();
 
-	setUpStartscreen();
+	lebenDosen = 4;
+	aufgabenRichtigDosen = 0;
+	amWarten = false;
+
+	setUpStartscreen(); // Hier muss dann später noch
 }
 
 function removeBallonwerfen()
@@ -322,6 +356,10 @@ function removeBallonwerfen()
 	$(".ballons").remove();
 	$(".ball").remove(); // ball muss noch durch pfeil ersetzt werden!!!-------------------------------
 	$(".aufgabe").remove();
+
+	lebenBallons = 4;
+	aufgabenRichtigBallons = 0;
+	amWarten = false;
 
 	setUpStartscreen();
 }

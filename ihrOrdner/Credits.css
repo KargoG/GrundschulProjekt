@@ -19,7 +19,7 @@ html, body{
   font: 300, 30px , sans-serif;
   text-align: center;
   text-transform: uppercase;
-  animation: 60s credits linear infinite;  
+  animation: 60s credits linear infinite;
 }
 
 .movie{
