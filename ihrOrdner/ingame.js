@@ -13,7 +13,7 @@ var lebenBallons = 4;
 var aufgabenRichtigBallons = 0;
 var aufgabenZielBallons = 4;
 
-// Der hier ist von test2
+// Hier Gabs Konfliktlösung
 
 $(function(){
 	setUpStartscreen();
