@@ -30,7 +30,8 @@ function setUpStartscreen()
 
 	$(".auswahlButtons#spielStarten").click(function(){
 
-		setUpBallonwerfen();
+		//setUpBallonwerfen();
+		setUpDosenstand();
 		removeStartscreen();
 	});
 
@@ -265,7 +266,7 @@ function setUpBallonwerfen()
 					//Anstatt dem Fadeout kommt hier die wurf animation
 					//bei der die Flügel oben bleiben
 					$(this).fadeOut("2000", function(){
-						if(lebenDosen>0 && aufgabenRichtigBallons < aufgabenZielBallons)
+						if(lebenBallons>0 && aufgabenRichtigBallons < aufgabenZielBallons)
 							window.setTimeout(aufgabeErzeugenPlus, 1000);
 					});
 				}
