@@ -118,6 +118,7 @@ body
 
 .aufgabe
 {
+  color: white;
   display: flex;
   justify-content: center;
   font-size: 25pt;

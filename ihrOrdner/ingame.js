@@ -7,8 +7,8 @@ var größtesErgebnissDosen = 76; //ausgeschlossen
 var aufgabenZielDosen = 3;
 
 var anzahlBälle = 9;
-var kleinstesErgebnissBallons = 10;
-var größtesErgebnissBallons = 51;
+var kleinstesErgebnissBallons = 0;
+var größtesErgebnissBallons = 21;
 var lebenBallons = 4;
 var aufgabenRichtigBallons = 0;
 var aufgabenZielBallons = 4;
@@ -30,8 +30,8 @@ function setUpStartscreen()
 
 	$(".auswahlButtons#spielStarten").click(function(){
 
-		//setUpBallonwerfen();
-		setUpDosenstand();
+		setUpBallonwerfen();
+		//setUpDosenstand();
 		removeStartscreen();
 	});
 
@@ -267,7 +267,7 @@ function setUpBallonwerfen()
 					//bei der die Flügel oben bleiben
 					$(this).fadeOut("2000", function(){
 						if(lebenBallons>0 && aufgabenRichtigBallons < aufgabenZielBallons)
-							window.setTimeout(aufgabeErzeugenPlus, 1000);
+							window.setTimeout(aufgabeErzeugenPlus, 2000);
 					});
 				}
 				else { // Dies ist der Fall der Falsch angeklickten Lösung
@@ -279,7 +279,7 @@ function setUpBallonwerfen()
 
 					$(this).fadeOut("2000", function(){
 						if(lebenBallons>0 && aufgabenRichtigBallons < aufgabenZielBallons)
-							window.setTimeout(aufgabeErzeugenPlus, 1000);
+							window.setTimeout(aufgabeErzeugenPlus, 2000);
 					});
 				}
 
