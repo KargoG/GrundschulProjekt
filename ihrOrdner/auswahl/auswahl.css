@@ -1,0 +1,37 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-image: url(auswahl.png);
+  background-repeat: no-repeat;
+}
+#ballon{
+	position:absolute;
+	top:140px;
+	left:270px;
+}
+#ente{
+	position:absolute;
+	top:300px;
+	left:595px;
+}
+#dose{
+position:absolute;
+top:300px;
+
+}
+ballon:hover{
+	
+	
+}
+#ente:hover{
+	
+	
+}
+#dose:hover{
+
+
+}
