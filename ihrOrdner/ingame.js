@@ -1,5 +1,5 @@
 var anzahlDosen = 6; //Anzahl Dosen Auf dem Spielfeld (am besten max 6.)
-var lebenDosen = 4; //Insgesammte Versuche für den Doesenwerfstand
+var lebenDosen = 4; //Insgesammte Versuche für den Dosenwerfstand
 var aufgabenRichtigDosen = 0; // Anzahl richtig gelöster Aufgaben
 var amWarten = false; //wird genutzt um klicks während animationen abzufangen
 var kleinstesErgebnissDosen = 1; //inbegriffen
@@ -22,7 +22,7 @@ $(function(){
 function setUpStartscreen()
 {
 	// Das Bild MUSS noch geändert werden -----------------------------------------------
-	$("body").css({"backgroundImage" : "url('bilder/Dosenstand.png')"})
+	$("body").css({"backgroundImage" : "url('Dosenstand/Dosenstand.png')"})
 
 	$("body").append("<div class='startscreenText'>Jahrmarkt Spaß</div>")
 	$("body").append("<div class='auswahlButtons' id='spielStarten'>Spiel Starten</div>");
@@ -30,8 +30,8 @@ function setUpStartscreen()
 
 	$(".auswahlButtons#spielStarten").click(function(){
 
-		//setUpBallonwerfen();
-		setUpDosenstand();
+
+		setUpAuswahlscreen();
 		removeStartscreen();
 	});
 
@@ -39,6 +39,65 @@ function setUpStartscreen()
 		setUpCredits();
 		removeStartscreen();
 	});
+}
+
+function setUpAuswahlscreen()
+{
+	$("body").css({"backgroundImage" : "url('auswahl/auswahl.png')"});
+	$("body").append("<div class='dosenwerfstand' id='stand'></div>");
+	$("body").append("<div class='luftballonstand' id='stand'></div>");
+	$("body").append("<div class='entenfischstand' id='stand'></div>");
+
+	$(".dosenwerfstand").hover(function(){
+		$("body").append("<img src='auswahl/yellowshining.png' class='schimmer'></img>");
+		$("img").css({
+			"width": "500px",
+			"height": "350px",
+			"top" : "220px"
+		});
+	}, function(){
+		$(".schimmer").remove();
+	});
+
+	$(".luftballonstand").hover(function(){
+		$("body").append("<img src='auswahl/yellowshining.png' class='schimmer'></img>");
+		$("img").css({
+			"width": "1200px",
+			"height": "450px",
+			"left" : "25px"
+		});
+	}, function(){
+		$(".schimmer").remove();
+	});
+
+	$(".entenfischstand").hover(function(){
+		$("body").append("<img src='auswahl/yellowshining.png' class='schimmer'></img>");
+		$("img").css({
+			"width": "500px",
+			"height": "350px",
+			"right": "0px",
+			"top" : "220px"
+		});
+	}, function(){
+		$(".schimmer").remove();
+	});
+
+	$(".dosenwerfstand").click(function(){
+		setUpDosenstand();
+		removeAuswahlscreen();
+	});
+
+	$(".luftballonstand").click(function(){
+		setUpBallonwerfen();
+		removeAuswahlscreen();
+	});
+
+	/*
+	$(".entenfischstand").click(function(){
+		setUpDosenstand();
+		removeAuswahlscreen();
+	});
+	*/
 }
 
 function setUpCredits()
@@ -77,7 +136,7 @@ function setUpDosenstand()
 
 	$("body").css(
 	{
-		"backgroundImage" : "url('bilder/Dosenstand.png')"
+		"backgroundImage" : "url('Dosenstand/Dosenstand.png')"
 	});
 
 
@@ -90,7 +149,7 @@ function setUpDosenstand()
 		// Hier wird den Dosen unterschiedliche Bilder gegeben
 		$((".dose#" + i)).css(
 		{
-			"backgroundImage" : "url('bilder/JahrmarkDose_" + ((i%4)+1) + ".png')"
+			"backgroundImage" : "url('Dosenstand/JahrmarkDose_" + ((i%4)+1) + ".png')"
 		});
 
 		//hier wird die Position der Dosen in einem Pyramiden-Muster fest gelegt
@@ -131,9 +190,24 @@ function setUpDosenstand()
 
 					//Anstatt dem Fadeout kommt hier die wurf animation
 					//bei der die Flügel oben bleiben
-					$(this).fadeOut("2000", function(){
-						if(lebenDosen>0 && aufgabenRichtigDosen < aufgabenZielDosen)
-							window.setTimeout(aufgabeErzeugenMinus, 1000);
+					var dose = $(this);
+
+					$("#"+(lebenDosen+1)+".ball").animate({
+						top : [dose.css("top"), "easeOutBack"],
+						left : parseInt(dose.css("left")) + 35 +"px"
+					},1500,"swing", function(){
+						dose.animate({
+							top : "750px"
+						},900, "easeInBack", function(){
+							dose.hide();
+							if(lebenDosen>0 && aufgabenRichtigDosen < aufgabenZielDosen)
+								window.setTimeout(aufgabeErzeugenMinus, 1000);
+						});
+						$("#"+(lebenDosen+1)+".ball").animate({
+							top: ["750px", "easeInBack"],
+							left: parseInt(dose.css("left")) - 100 + "px"
+
+						}, 1000);
 					});
 				}
 				else { // Dies ist der Fall der Falsch angeklickten Lösung
@@ -194,7 +268,7 @@ function setUpDosenstand()
 		// Hier erhalten die Bälle abhängig von ihrer Nummer ein Bild und eine Position
 		$("#"+ i +".ball").css(
 		{
-			"backgroundImage" : "url('bilder/Jahrmarktball_" + ((i%3)+1) + ".png')",
+			"backgroundImage" : "url('Dosenstand/Jahrmarktball_" + ((i%3)+1) + ".png')",
 			"left" : (890 - 40*(i-1)) + "px"
 		});
 
@@ -223,7 +297,7 @@ function setUpBallonwerfen()
 	$("body").css(
 	{
 		// Das Bild muss evtl noch geändert werden für den Stand ----------------------------------------------
-		"backgroundImage" : "url('bilder/Dosenstand.png')"
+		"backgroundImage" : "url('Dosenstand/Dosenstand.png')"
 	});
 
 
@@ -238,7 +312,7 @@ function setUpBallonwerfen()
 		{
 			"top" : (100 + 125*(i%3)) + "px",
 			// Das Dosenbild muss durch Luftballons ersetzt werden!!!-------------------------------------------
-			"backgroundImage" : "url('bilder/JahrmarkDose_" + ((i%4)+1) + ".png')"
+			"backgroundImage" : "url('Luftballonstand/Luftballon_" + ((i%6)+1) + ".png')"
 		});
 
 		//hier wird die Position der Dosen in einem Pyramiden-Muster fest gelegt
@@ -328,7 +402,7 @@ function setUpBallonwerfen()
 		// Das hier muss noch durch die Pfeile ersetzt werden (bälle bleiben ERSTMAL)-----------------------------------
 		$("#"+ i +".ball").css(
 		{
-			"backgroundImage" : "url('bilder/Jahrmarktball_" + ((i%3)+1) + ".png')",
+			"backgroundImage" : "url('Luftballonstand/Dartz.png')",
 			"left" : (890 - 40*(i-1)) + "px"
 		});
 
@@ -357,6 +431,14 @@ function removeStartscreen()
 	$(".startscreenText").remove()
 }
 
+function removeAuswahlscreen()
+{
+	$(".dosenwerfstand").remove();
+	$(".luftballonstand").remove();
+	$(".entenfischstand").remove();
+	$(".schimmer").remove();
+}
+
 function removeDosenwerfstand()
 {
 	$(".dose").remove();
@@ -367,7 +449,7 @@ function removeDosenwerfstand()
 	aufgabenRichtigDosen = 0;
 	amWarten = false;
 
-	setUpStartscreen(); // Hier muss dann später noch
+	setUpAuswahlscreen();
 }
 
 function removeBallonwerfen()
@@ -380,7 +462,7 @@ function removeBallonwerfen()
 	aufgabenRichtigBallons = 0;
 	amWarten = false;
 
-	setUpStartscreen();
+	setUpAuswahlscreen();
 }
 
 /**

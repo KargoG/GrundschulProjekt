@@ -2,6 +2,7 @@
 {
   box-sizing: border-box;
   background-repeat: no-repeat;
+  cursor: default;
 }
 
 body
@@ -75,6 +76,15 @@ body
   left: 350px;
 }
 
+.startButton
+{
+  background-image: url("Startseite/start_button.png");
+  width: 200px;
+  height: 50px;
+  position: absolute;
+  left: 500px;
+}
+
 .auswahlButtons
 {
   width: 200px;
@@ -98,6 +108,52 @@ body
 {
   top: 400px;
 }
+
+
+/*
+--------------------- Ab hier kommt der auswahl Bildschirm ---------------------
+*/
+
+#stand
+{
+  position: absolute;
+  z-index: 10;
+}
+
+.dosenwerfstand
+{
+  background-image: url("auswahl/auswahl_dosenwerfstand.png");
+  width: 226px;
+  height: 321px;
+  top: 228px;
+}
+
+.luftballonstand
+{
+  background-image: url("auswahl/auswahl_luftballon.png");
+  width: 467px;
+  height: 308px;
+  left: 366.5px
+}
+
+.entenfischstand
+{
+  background-image: url("auswahl/auswahl_entenfischstand.png");
+  width: 226px;
+  height: 321px;
+  top: 228px;
+  right: 0;
+}
+
+.schimmer
+{
+  position: absolute;
+
+}
+
+
+
+
 
 .dose
 {
