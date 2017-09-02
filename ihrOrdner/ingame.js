@@ -149,6 +149,7 @@ function setUpDosenstand()
 						dose.animate({
 							top : "750px"
 						},900, "easeInBack", function(){
+							dose.hide();
 							if(lebenDosen>0 && aufgabenRichtigDosen < aufgabenZielDosen)
 								window.setTimeout(aufgabeErzeugenMinus, 1000);
 						});
