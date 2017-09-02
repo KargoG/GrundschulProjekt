@@ -7,8 +7,8 @@ var größtesErgebnissDosen = 76; //ausgeschlossen
 var aufgabenZielDosen = 3;
 
 var anzahlBälle = 9;
-var kleinstesErgebnissBallons = 10;
-var größtesErgebnissBallons = 51;
+var kleinstesErgebnissBallons = 0;
+var größtesErgebnissBallons = 21;
 var lebenBallons = 4;
 var aufgabenRichtigBallons = 0;
 var aufgabenZielBallons = 4;
@@ -30,7 +30,8 @@ function setUpStartscreen()
 
 	$(".auswahlButtons#spielStarten").click(function(){
 
-		setUpBallonwerfen();
+		//setUpBallonwerfen();
+		setUpDosenstand();
 		removeStartscreen();
 	});
 
@@ -139,24 +140,40 @@ function setUpDosenstand()
 					$(".aufgabe").text("Das ist nicht Richtig! " + zahl1 + " - " +
 					zahl2 + " = " + lösung);
 
+					var dose = $(this);
+
+					$("#"+(lebenDosen+1)+".ball").animate({
+						top : [dose.css("top"), "easeOutBack"],
+						left : parseInt(dose.css("left")) + 35 +"px"
+					},1500,"swing", function(){
+						dose.animate({
+							top : "750px"
+						},900, "easeInBack", function(){
+							dose.hide();
+							if(lebenDosen>0 && aufgabenRichtigDosen < aufgabenZielDosen)
+								window.setTimeout(aufgabeErzeugenMinus, 1000);
+						});
+						$("#"+(lebenDosen+1)+".ball").animate({
+							top: ["750px", "easeInBack"],
+							left: parseInt(dose.css("left")) - 100 + "px"
+
+						}, 1000);
+					});
 					//Hier Fehlt noch die Wurfanimation in der die Dose sammt
 					//Flügel fällt
 
-					$(this).fadeOut("2000", function(){
-						if(lebenDosen>0 && aufgabenRichtigDosen < aufgabenZielDosen)
-							window.setTimeout(aufgabeErzeugenMinus, 1000);
-					});
+
 				}
 
 				if(aufgabenRichtigDosen >= aufgabenZielDosen) // Hier wird nach dem Wurf geprüft ob man die benötigte anzahl an richtigen Würfen erreicht wurde
 				{
 					$(".aufgabe").text("Bravo! Du hast Gewonnen!");
-					window.setTimeout(removeDosenwerfstand, 2000);
+					window.setTimeout(removeDosenwerfstand, 3000);
 				}
 				else if (lebenDosen < 1) { // Hier wird, falls der vorrige Fall NICHT eingetroffen ist geguckt ob alle Würfe verbraucht wurden
 					$(".aufgabe").text("Du hast alle Bälle aufgebraucht! Insgesammt hast du "
 					+ aufgabenRichtigDosen + " Aufgaben Richtig!");
-					window.setTimeout(removeDosenwerfstand, 2000);
+					window.setTimeout(removeDosenwerfstand, 3000);
 				}
 			}
 
@@ -265,8 +282,8 @@ function setUpBallonwerfen()
 					//Anstatt dem Fadeout kommt hier die wurf animation
 					//bei der die Flügel oben bleiben
 					$(this).fadeOut("2000", function(){
-						if(lebenDosen>0 && aufgabenRichtigBallons < aufgabenZielBallons)
-							window.setTimeout(aufgabeErzeugenPlus, 1000);
+						if(lebenBallons>0 && aufgabenRichtigBallons < aufgabenZielBallons)
+							window.setTimeout(aufgabeErzeugenPlus, 2000);
 					});
 				}
 				else { // Dies ist der Fall der Falsch angeklickten Lösung
@@ -278,7 +295,7 @@ function setUpBallonwerfen()
 
 					$(this).fadeOut("2000", function(){
 						if(lebenBallons>0 && aufgabenRichtigBallons < aufgabenZielBallons)
-							window.setTimeout(aufgabeErzeugenPlus, 1000);
+							window.setTimeout(aufgabeErzeugenPlus, 2000);
 					});
 				}
 
