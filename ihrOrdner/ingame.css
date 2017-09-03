@@ -81,6 +81,7 @@ body
   background-image: url("Startseite/start_button.png");
   width: 200px;
   height: 50px;
+  display: flex;
   position: absolute;
   left: 500px;
 }
