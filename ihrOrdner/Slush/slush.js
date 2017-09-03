@@ -1,6 +1,6 @@
 $(function(){
 	
-	var points =40; //das ist eine Variable die übergeben wird
+	var points =51.5; //das ist eine Variable die übergeben wird
 	var animatePoints = "-="+points+"px";
 	var counter =0;
 	$("#startAnimation").css({"cursor":"pointer"});
