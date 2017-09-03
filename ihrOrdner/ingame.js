@@ -25,7 +25,7 @@ function setUpStartscreen()
 	$("body").css({"backgroundImage" : "url('Dosenstand/Dosenstand.png')"})
 
 	$("body").append("<div class='startscreenText'>Jahrmarkt Spaß</div>")
-	$("body").append("<div class='auswahlButtons' id='spielStarten'>Spiel Starten</div>");
+	$("body").append("<div class='startButton' id='spielStarten'>" /*Spiel Starten*/ + "</div>");
 	$("body").append("<div class='auswahlButtons' id='credits'>Credits</div>");
 
 	$(".auswahlButtons#spielStarten").click(function(){
