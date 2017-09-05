@@ -22,20 +22,19 @@ $(function(){
 function setUpStartscreen()
 {
 	// Das Bild MUSS noch geändert werden -----------------------------------------------
-	$("body").css({"backgroundImage" : "url('Dosenstand/Dosenstand.png')"})
+	$("body").css({"backgroundImage" : "url('Startseite/Starseite.png')"})
 
-	$("body").append("<div class='startscreenText'>Jahrmarkt Spaß</div>")
-	$("body").append("<div class='startButton' id='spielStarten'>" /*Spiel Starten*/ + "</div>");
-	$("body").append("<div class='auswahlButtons' id='credits'>Credits</div>");
+	$("body").append("<div class='startButton'></div>");
+	$("body").append("<div class='creditsButton'></div>");
 
-	$(".auswahlButtons#spielStarten").click(function(){
+	$(".startButton").click(function(){
 
 
 		setUpAuswahlscreen();
 		removeStartscreen();
 	});
 
-	$(".auswahlButtons#credits").click(function(){
+	$(".creditsButton").click(function(){
 		setUpCredits();
 		removeStartscreen();
 	});
@@ -189,24 +188,24 @@ function setUpDosenstand()
 					$(".aufgabe").text("Richtig! Das hast du sehr gut gemacht!");
 					aufgabenRichtigDosen++;
 
-					//Anstatt dem Fadeout kommt hier die wurf animation
-					//bei der die Flügel oben bleiben
 					var dose = $(this);
 
 					$("#"+(lebenDosen+1)+".ball").animate({
-						top : [dose.css("top"), "easeOutBack"],
-						left : parseInt(dose.css("left")) + 35 +"px"
+						top : [$(this).css("top"), "easeOutBack"],
+						left : parseInt($(this).css("left")) + 35 +"px"
 					},1500,"swing", function(){
+						$("body").append("<div class='schild s" +lebenDosen + "' id='richtig'></div>");
+						$(".s"+lebenDosen).css({"top" : $(this).css("top"), "left" : $(this).css("left")});
 						dose.animate({
 							top : "750px"
 						},900, "easeInBack", function(){
-							dose.hide();
+							$(this).hide();
 							if(lebenDosen>0 && aufgabenRichtigDosen < aufgabenZielDosen)
 								window.setTimeout(aufgabeErzeugenMinus, 1000);
 						});
 						$("#"+(lebenDosen+1)+".ball").animate({
 							top: ["750px", "easeInBack"],
-							left: parseInt(dose.css("left")) - 100 + "px"
+							left: parseInt($(this).css("left")) - 100 + "px"
 
 						}, 1000);
 					});
@@ -218,19 +217,21 @@ function setUpDosenstand()
 					var dose = $(this);
 
 					$("#"+(lebenDosen+1)+".ball").animate({
-						top : [dose.css("top"), "easeOutBack"],
-						left : parseInt(dose.css("left")) + 35 +"px"
+						top : [$(this).css("top"), "easeOutBack"],
+						left : parseInt($(this).css("left")) + 35 +"px"
 					},1500,"swing", function(){
+						$("body").append("<div class='schild s" +lebenDosen + "' id='falsch'></div>");
+						$(".s"+lebenDosen).css({"top" : $(this).css("top"), "left" : $(this).css("left")});
 						dose.animate({
 							top : "750px"
 						},900, "easeInBack", function(){
-							dose.hide();
+							$(this).hide();
 							if(lebenDosen>0 && aufgabenRichtigDosen < aufgabenZielDosen)
 								window.setTimeout(aufgabeErzeugenMinus, 1000);
 						});
 						$("#"+(lebenDosen+1)+".ball").animate({
 							top: ["750px", "easeInBack"],
-							left: parseInt(dose.css("left")) - 100 + "px"
+							left: parseInt($(this).css("left")) - 100 + "px"
 
 						}, 1000);
 					});
@@ -428,7 +429,8 @@ function setUpBallonwerfen()
 
 function removeStartscreen()
 {
-	$(".auswahlButtons").remove();
+	$(".startButton").remove();
+	$(".creditsButton").remove();
 	$(".startscreenText").remove()
 }
 
@@ -445,6 +447,7 @@ function removeDosenwerfstand()
 	$(".dose").remove();
 	$(".ball").remove();
 	$(".aufgabe").remove();
+	$(".schild").remove();
 
 	lebenDosen = 4;
 	aufgabenRichtigDosen = 0;
