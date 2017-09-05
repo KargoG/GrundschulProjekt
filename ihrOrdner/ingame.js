@@ -92,12 +92,12 @@ function setUpAuswahlscreen()
 		removeAuswahlscreen();
 	});
 
-	/*
+	
 	$(".entenfischstand").click(function(){
-		setUpDosenstand();
+		setUpEntenstand();
 		removeAuswahlscreen();
 	});
-	*/
+	
 }
 
 function setUpCredits()
@@ -105,7 +105,8 @@ function setUpCredits()
 
 	// Das zeug muss noch mal geupdated werden mit ordentlichem bild
 	$("body").css({
-  	"background": "radial-gradient(circle at top center, #333 20%, #111 100%)" //*irgendwas rundes als hintergrund*//
+  	"background": "radial-gradient(circle at top center, #333 20%, #111 100%)", //*irgendwas rundes als hintergrund*//
+	"background-repeat:no-repeat"
 	});
 
 	$("body").html(
@@ -450,6 +451,12 @@ function removeDosenwerfstand()
 	amWarten = false;
 
 	setUpAuswahlscreen();
+}
+
+function removeEntenstand(){
+	$("body").html("");
+	
+	setUpAuswahlscreen();	
 }
 
 function removeBallonwerfen()
