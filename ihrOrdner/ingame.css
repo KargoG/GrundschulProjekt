@@ -188,13 +188,27 @@ body
   background-image: url("loesung_false.png");
 }
 
+/*
+------------------------------Ab hier beginnt der BallonStand-------------------
+*/
+
+.pfeil
+{
+  display: flex;
+  z-index: 20;
+  height: 201px;
+  width: 122px;
+  position: absolute;
+  top: 480px;
+  left: 890px;
+}
+
 .ballons
 {
-  background-size: 150px, 345px;
   display: flex;
   z-index: 10;
-  height: 65px;
-  width: 150px;
+  height: 123px;
+  width: 95px;
   position: absolute;
   align-items: center;
   justify-content: center;

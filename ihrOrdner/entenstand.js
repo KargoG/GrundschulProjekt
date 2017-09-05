@@ -6,70 +6,72 @@ var loesungsDuck = "";
 var loesungTemp = 0;
 
 function setUpEntenstand(){
+
 //kleinstesErgebniss = 1;
 //größtes Ergebniss = 500;
 	$("body").html(
 		"<!--hier sind die Enten -->\
 			<div class='clickDuck'>\
 				<p class='zahl' id='zahl1'></p>\
-				<img src='duck.png' class='duck'		alt='duck_left'  width='150' height='150' id='duck1'>\
+				<img src='Entenstand/duck.png' class='duck'		alt='duck_left'  width='150' height='150' id='duck1'>\
 			</div>	\
 		\
 			<div class='clickDuck'>\
 				<p class='zahl' id='zahl2'></p>\
-				<img src='duckinverted.png' class='duck' alt='duck_right' width='150' height='150' id='duck2'>\
+				<img src='Entenstand/duckinverted.png' class='duck' alt='duck_right' width='150' height='150' id='duck2'>\
 			</div>\
 		\
 			<div class='clickDuck'>	\
 				<p class='zahl' id='zahl3'></p>\
-				<img src='duck.png' class='duck' alt='duck_left'  width='150' height='150' id='duck3'>\
+				<img src='Entenstand/duck.png' class='duck' alt='duck_left'  width='150' height='150' id='duck3'>\
 			</div>\
 		\
 			<div class='clickDuck'>	\
 				<p class='zahl' id='zahl4'></p>\
-				<img src='duckinverted.png' class='duck' alt='duck_right' width='150' height='150' id='duck4'>\
+				<img src='Entenstand/duckinverted.png' class='duck' alt='duck_right' width='150' height='150' id='duck4'>\
 			</div>\
 		\
 			<div class='clickDuck'>\
 				<p class='zahl' id='zahl5'></p>\
-				<img src='duck.png'	class='duck' alt='duck_left'  width='150' height='150' id='duck5'>\
+				<img src='Entenstand/duck.png'	class='duck' alt='duck_left'  width='150' height='150' id='duck5'>\
 			</div>\
 		\
 			<div class='clickDuck'>	\
 				<p class='zahl' id='zahl6'></p>\
-				<img src='duckinverted.png' class='duck' alt='duck_right' width='150' height='150' id='duck6'>\
+				<img src='Entenstand/duckinverted.png' class='duck' alt='duck_right' width='150' height='150' id='duck6'>\
 			</div>\
 		\
 		<!---- Das sind die leben--->\
-		<img src='duck.png'  class='ducklife' width='50' height='50' id='ducklife1'>\
-		<img src='duck.png'  class='ducklife' width='50' height='50' id='ducklife2'>\
-		<img src='duck.png'  class='ducklife' width='50' height='50' id='ducklife3'>\
-		<img src='duck.png'  class='ducklife' width='50' height='50' id='ducklife4'>\
+		<img src='Entenstand/duck.png'  class='ducklife' width='50' height='50' id='ducklife1'>\
+		<img src='Entenstand/duck.png'  class='ducklife' width='50' height='50' id='ducklife2'>\
+		<img src='Entenstand/duck.png'  class='ducklife' width='50' height='50' id='ducklife3'>\
+		<img src='Entenstand/duck.png'  class='ducklife' width='50' height='50' id='ducklife4'>\
 		\
 			<div id='aufgabe'>\
 				<p></p>\
 			</div>\
 			<div id='aufgabeFalsch'>\
 				<p></p>\
-			</div>");		
-			
+			</div>");
+
+			$("body").css({"background-image": "url('EntenStand/entenfischstand_only.png')"});
 	var auswahlDesSpiels = zufallsZahlen(1,2);
 	if(auswahlDesSpiels == 1)  //ob man halbiert oder verdoppelt
 		{
 			generiereAufgabenDuck();
 		$(".clickDuck").click(function()		// damit man auf die enten Klicken kann mit feedback
-		{	
-				//$(".ducklife").click(function(){return false;});	//damit man nicht auf die Leben Klciken kann 
+		{
+				//$(".ducklife").click(function(){return false;});	//damit man nicht auf die Leben Klciken kann
 				//var temp = $(this).text();
-				
+
 			if(loesungTemp == parseInt($(this).children("p").text()) )
-			{	
+			{
 				$(this).children().hide();
-				$(this).find("img").attr("src","loesung_true.png");	//feedbeack
+				$(this).find("img").attr("src","Entenstand/loesung_true.png");	//feedbeack
 				$(this).find("img").show();
 				$("#aufgabeFalsch").text("Das ist Richtig! "+ $(this).find("p").text()).css({"color":"green"});
 				window.setTimeout(generiereAufgabenDuck, 1500);
-				window.setTimeout(function(){$(this).find("img").attr("src","duck.png");
+				window.setTimeout(function(){$(this).find("img").attr("src","Entenstand/duck.png");
 				$("p").show();},1500);
 			}
 				/*else if(lebenDuck == 1)
@@ -85,18 +87,17 @@ function setUpEntenstand(){
 				}*/
 			else
 			{
-				console.log("#ducklife"+lebenDuck);
 				$("#ducklife"+lebenDuck).hide();
-				
+
 				$(this).hide();
-				$(this).find("img").attr("src","loesung_false.png");//feedback
+				$(this).find("img").attr("src","Entenstand/loesung_false.png");//feedback
 				$(this).show();
 				lebenDuck--;
 				$("#aufgabeFalsch").text("Das ist nicht Richtig! " + $(this).find("p").text()+ " Pass auf deine Leben auf -->").css({"color":"red"});
 			}
 		});
 	}
-});
+}
 
 		/*else
 		{
@@ -106,7 +107,7 @@ function setUpEntenstand(){
 				do{
 				var neueZahl = true;
 					var temp = zufallsZahlen(2,250);
-					
+
 					if(temp % 2 != 0)
 					{// damit keine kommazahlehn entstehen !
 						temp++;
@@ -121,13 +122,13 @@ function setUpEntenstand(){
 						}
 					}
 				}while (!neueZahl);
-				
+
 				var loesungsDuck = "#zahl" + parseInt(Math.random()*allducks+1);
 				loesung2 = parseInt($(loesungsDuck).text());
-				loesung2 *= 2;			
-				
-				
-				$("#aufgabe").text("Was ist das Doppelte der Zahl " + loesung2 + " ?");				
+				loesung2 *= 2;
+
+
+				$("#aufgabe").text("Was ist das Doppelte der Zahl " + loesung2 + " ?");
 			}
 			$(".clickDuck").click(function()
 				{
@@ -144,22 +145,22 @@ function setUpEntenstand(){
 						$(this).show("fast");
 						lebenDuck--;
 					}
-				});	
+				});
 		}*/
 
 function generiereAufgabenDuck()
 {
-	
+
 	for(var i = 1; i<allducks+1; i++)
 			{
-				
+
 				if(i % 2 == 0 ){
-					if(!$("#duck"+i).attr("src","duckinverted.png")){ // ist ein feature!
-					$("#duck"+i).attr("src","duckinverted.png");
+					if(!$("#duck"+i).attr("src","Entenstand/duckinverted.png")){ // ist ein feature!
+					$("#duck"+i).attr("src","Entenstand/duckinverted.png");
 					}
 				}else{
-					if(!$("#duck"+i).attr("src","duck.png")){
-					$("#duck"+i).attr("src","duck.png");
+					if(!$("#duck"+i).attr("src","Entenstand/duck.png")){
+					$("#duck"+i).attr("src","Entenstand/duck.png");
 					}
 				}
 			//verdoppeln
@@ -167,12 +168,12 @@ function generiereAufgabenDuck()
 				{
 					var neueZahl = true;
 					var temp = zufallsZahlen(1,500);
-					
+
 					if(temp % 2 != 0)// damit keine kommazahlehn entstehen !
 					{
 						temp++;
 					}
-						
+
 					$("#zahl" + i).text(temp);	//Zahlen auffüllen
 					for(var j = 1; j < i; j++)
 					{
@@ -182,22 +183,25 @@ function generiereAufgabenDuck()
 						}
 					}
 				} while (!neueZahl);
-				
+
 				loesungsDuck = "#zahl" + parseInt(Math.random()*allducks+1);	//um die Lösung herauszufinden
 				loesung1 = parseInt($(loesungsDuck).text());
-				loesungTemp = loesung1;	//für die textbox mit der Lösung 
+				loesungTemp = loesung1;	//für die textbox mit der Lösung
 				loesung1 /= 2;
 				$("#aufgabe").text("Was ist das Doppelte der Zahl " + loesung1 + " ?");
 			}
 }
-/**
-* Die Funktion "zufallsZahlen" erzeugt einen Zufallswert zwischen 2 übergebenen
-* Zahlen. Die erste Zahl, die den Parameter min betitelt, ist die untere Grenze.
-* Diese ist bei der berechnung des Wertes INBEGRIFFEN. Die zweite Zahl,
-* die den Parameter max betitelt ist die obere Grenze. Diese ist bei der
-* berechnung des Wertes AUSGESCHLOSSEN.
-*/
-function zufallsZahlen(min, max)
+
+function removeEntenstand()
 {
-	return parseInt((Math.random()*(max-min))+min);
+	entenGespielt = true;
+	
+	$(".clickDuck").remove();
+	$(".zahl").remove();
+	$(".duck").remove();
+	$(".ducklife").remove();
+	$(".aufgabe").remove();
+	$(".aufgabeFalsch").remove();
+
+	setUpAuswahlscreen();
 }

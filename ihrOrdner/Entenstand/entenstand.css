@@ -2,52 +2,107 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	
- }
- body{
-	 background-image: url("entenfischstand_only.png");
-	background-repeat: no-repeat;
-	max-width:100%;
-	max-height: 100%;
  }
  
- #one{
+ .duck{
 	 position:absolute;
-	 top:170px;
-	 left:120px; 
+	 z-index:50;
  }
- #second{
-	 position:absolute;
-	 top:340px;
-	 left:150px;
+ #duck1{
+	 top:200px;
+	 left:210px;
  }
- #third{
-	 position:absolute;
-	 top:310px;
-	 left:360px;
+ #duck2{
+	 top:260px;
+	 left:450px;
  }
- #fourth{
-	 position:absolute;
-	 top:340px;
-	 left:550px;
+ #duck3{
+	 top:220px;
+	 left:800px;
  }
- #five{
-	 position:absolute;
-	 top:190px;
-	 left:540px; 
- }
- #six{
-	 position:absolute;
-	 top:180px;
-	 left:300px;
- }
- #aufgabe{
-	 position:absolute;
-	 top:560px;
+ #duck4{
+	 top:400px;
 	 left:200px;
  }
- #loesung{
-	 position:absolute;
-	 top:70px;
+ #duck5{
+	 top:390px;
+	 left:600px;
+ }
+ #duck6{
+	 top:390px;
+	 left:850px;
+ }
+
+ /*------------------------Zahlen-----------------*/
+.zahl{
+	z-index:60;
+	position:absolute;
+	font-size: 25px;
+	font-family: Verdana, sans-serif;
+}
+#zahl1{
+	top:290px;
+	 left:255px;
+ }
+#zahl2{
+	 top:350px;
+	 left:500px;
+ }
+ #zahl3{
+	 top:310px;
+	 left:845px;
+ }
+ #zahl4{
+	 top:485px;
 	 left:250px;
+ }
+ #zahl5{
+	 top:480px;
+	 left:640px;
+ }
+ #zahl6{
+	 top:480px;
+	 left:900px;
+
+ }
+ /*---------Leben--------*/
+ #ducklife1{
+	 z-index: 60;
+	 position:absolute;
+	 top:680px;
+	 left:940px;
+ }
+ #ducklife2{
+	 z-index: 60;
+	 position:absolute;
+	  top:680px;
+	left:1000px;
+ }
+ #ducklife3{
+	 z-index: 60;
+	 position:absolute;
+	  top:680px;
+	 left:1060px;
+ }
+ #ducklife4{
+	 z-index: 60;
+	 position:absolute;
+	  top:680px;
+	 left:1120px;
+ }
+
+ #aufgabe{
+font-size: 20px;
+	font-family: Verdana, sans-serif;
+ position:absolute;
+	top:675px;
+	left:390px;
+ }
+ #aufgabeFalsch{
+font-size: 20px;
+color:red;
+	font-family: Verdana, sans-serif;
+ position:absolute;
+	top:710px;
+	left:450px;
  }
