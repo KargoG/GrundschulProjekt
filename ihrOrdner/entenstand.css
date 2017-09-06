@@ -1,0 +1,110 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+ }
+
+ .duck{
+	 position:absolute;
+	 z-index:50;
+ }
+ #duck1{
+	 top:200px;
+	 left:210px;
+ }
+ #duck2{
+	 top:260px;
+	 left:450px;
+ }
+ #duck3{
+	 top:220px;
+	 left:800px;
+ }
+ #duck4{
+	 top:400px;
+	 left:200px;
+ }
+ #duck5{
+	 top:390px;
+	 left:600px;
+ }
+ #duck6{
+	 top:390px;
+	 left:850px;
+ }
+
+ /*------------------------Zahlen-----------------*/
+.zahl{
+	z-index:60;
+	position:absolute;
+	font-size: 25px;
+	font-family: Verdana, sans-serif;
+}
+#zahl1{
+	top:290px;
+	left:255px;
+ }
+#zahl2{
+	 top:350px;
+	 left:500px;
+ }
+ #zahl3{
+	 top:310px;
+	 left:845px;
+ }
+ #zahl4{
+	 top:485px;
+	 left:250px;
+ }
+ #zahl5{
+	 top:480px;
+	 left:640px;
+ }
+ #zahl6{
+	 top:480px;
+	 left:900px;
+
+ }
+ /*---------Leben--------*/
+ #ducklife1{
+	 z-index: 60;
+	 position:absolute;
+	 top:680px;
+	 left:940px;
+ }
+ #ducklife2{
+	 z-index: 60;
+	 position:absolute;
+	 top:680px;
+	 left:1000px;
+ }
+ #ducklife3{
+	 z-index: 60;
+	 position:absolute;
+	 top:680px;
+	 left:1060px;
+ }
+ #ducklife4{
+	 z-index: 60;
+	 position:absolute;
+	 top:680px;
+	 left:1120px;
+ }
+
+ #aufgabe{
+	 color: white;
+	 font-size: 20px;
+	 font-family: Verdana, sans-serif;
+	 position:absolute;
+	 top:675px;
+	 left:390px;
+ }
+
+#aufgabeFalsch{
+	font-size: 20px;
+	color:red;
+	font-family: Verdana, sans-serif;
+	position:absolute;
+	top:710px;
+	left:300px;
+ }
