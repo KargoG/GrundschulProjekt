@@ -46,7 +46,7 @@ body
   font-size: 40px;
 }
 
-#exit{//*button*//
+#exit{
 	background:#191970;
 	color:white;
 	font-size:35px;
@@ -145,11 +145,6 @@ body
   justify-content: center;
 }
 
-.dose:hover
-{
-  box-shadow: 10px 10px red;
-}
-
 .aufgabe
 {
   color: white;
@@ -194,6 +189,7 @@ body
 
 .pfeil
 {
+  background-image : url('Luftballonstand/Dartz.png');
   display: flex;
   z-index: 20;
   height: 201px;

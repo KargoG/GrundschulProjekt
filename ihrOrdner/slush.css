@@ -1,0 +1,38 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ }
+
+body{
+	background-image:url(Slush/auswahl.png);
+	background-repeat: no-repeat;
+}
+#center{
+	position:fixed;
+	top:30px;
+	left:30px;
+}
+/*
+img[alt="hintergrund"]{
+	position : relativ;
+	z-index: 10;
+}*/
+
+img[alt="eis"]{
+	position: absolute;
+	top: 400px;
+	left:350px;
+	z-index: 50;
+}
+
+img[alt="becher"]{
+	position : absolute;
+	top:-30px;
+	left:-30px;
+	z-index: 100;
+}
+#startAnimation{
+	position:absolute;
+	z-index:110;
+}
